@@ -1,4 +1,4 @@
-function MovieCard({ movieObject }) {
+function MovieCard({ movie }) {
   function onFavoriteClick() {
     alert("Favorite Clicked");
   }
@@ -6,18 +6,18 @@ function MovieCard({ movieObject }) {
   return (
     <div className="movie-card">
       <div className="movie-poster">
-        <img src={movieObject.url} alt={movieObject.title} />
+        <img src={movie.url} alt={movie.title} />
       </div>
       <div className="movie-overlay">
         <button className="favorite-btn" onClick={onFavoriteClick}>
           {" "}
           **
         </button>
-        <p>{movieObject.description}</p>
+        <p>{movie.description}</p>
       </div>
       <div className="movie-info">
-        <h3>{movieObject.title}</h3>
-        <p>{movieObject.release_date}</p>
+        <h3>{movie.title}</h3>
+        <p>{movie.release_date}</p>
       </div>
     </div>
   );
