@@ -27,9 +27,23 @@ function Home() {
     loadPopularMovies();
   }, []); //Callback function runs whenever the dependecy array is updated
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault(); //prevents the default behavior of clearing search after submit form
-    alert(searchQuery);
+
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.error("Error searching movies:", err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
