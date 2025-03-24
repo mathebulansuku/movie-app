@@ -22,5 +22,19 @@ export const MovieProvider = ({ children }) => {
   const addToFavorite = (movie) => {
     setFavorites((prevFavorites) => [...prevFavorites, movie]);
   };
-  return <MovieContext.Provider>{children}</MovieContext.Provider>;
+
+  const removeFromFavorite = (movieId) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((movie) => movie.id !== movieId)
+    ); //generates a new array of movies that are not equal to id
+  };
+
+  const isFavorite = (movieId) => {
+    return favorites.some((movie) => movie.id === movieId);
+  };
+
+  const value = { favorites, addToFavorite, removeFromFavorite, isFavorite }; //add values or functions that you want to be accessible on children.
+  return (
+    <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
+  );
 }; //Provides state to any of the components that are wrapped inside of it
