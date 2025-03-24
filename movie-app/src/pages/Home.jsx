@@ -46,15 +46,20 @@ function Home() {
           Search
         </button>
       </form>
-      "
-      <div className="movies-grid">
-        {movies.map(
-          (movie) =>
-            movie.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
-              <MovieCard movie={movie} key={movie.id} />
-            )
-        )}
-      </div>
+
+      {error && <p className="error-message">{error}</p>}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="movies-grid">
+          {movies.map(
+            (movie) =>
+              movie.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
+                <MovieCard movie={movie} key={movie.id} />
+              )
+          )}
+        </div>
+      )}
     </div>
   );
 }
