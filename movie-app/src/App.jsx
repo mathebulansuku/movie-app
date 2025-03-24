@@ -1,15 +1,7 @@
 import "./App.css";
+import MovieCard from "./components/MovieCard";
 
 function App() {
-  return (
-    <>
-      <Text display="Hello" />
-      <Text display="How are you?" />
-    </>
-  );
-}
-
-function Text({ display }) {
-  return <p>{display}</p>;
+  return <></>;
 }
 export default App;
